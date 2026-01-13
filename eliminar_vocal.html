@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Vocal</title>
+   
+</head>    
+<body>
+    <header>    
+        <h1>6. Eliminar Vocal</h1>
+        <p>Crea una aplicación que contenga un párrafo con mucho texto. Debajo del párrafo debe aparecer un botón por cada vocal. Al pulsar sobre una vocal, esa vocal desaparecerá del texto.</p>
+        <p><a href="index.html">volver atrás</a></p>
+    </header>
+
+    <main>
+        <p id="parrafo">Éste es un párrafo de prueba que servirá para probar el funcionamiento de los botones que eliminan las vocales</p>
+
+        <button id="a">A</button>
+        <button id="e">E</button>
+        <button id="i">I</button>
+        <button id="o">O</button>
+        <button id="u">U</button>
+        <button id="reiniciar">Reiniciar</button>
+       
+    </main>
+
+    <script>
+        
+        let parrafo = document.getElementById("parrafo");
+        let a = document.getElementById("a");
+        let e = document.getElementById("e");
+        let i = document.getElementById("i");
+        let o = document.getElementById("o");
+        let u = document.getElementById("u");
+        let reiniciar = document.getElementById("reiniciar");
+        
+       
+
+    a.addEventListener('click', ()=>{
+       let as = parrafo.textContent.replace(/[aáàäâ]/gi, "")
+       parrafo.textContent = as;
+    })
+
+    e.addEventListener('click', ()=>{
+        let es = parrafo.textContent.replace(/[eéèëê]/gi, "")
+        parrafo.textContent = es;
+     })
+
+    i.addEventListener('click', ()=>{
+        let is = parrafo.textContent.replace(/[iíìïî]/gi, "")
+        parrafo.textContent = is;
+     })
+
+    o.addEventListener('click', ()=>{
+        let os = parrafo.textContent.replace(/[oóòöô]/gi, "")
+        parrafo.textContent = os;
+     })
+
+    u.addEventListener('click', ()=>{
+        let us = parrafo.textContent.replace(/[uúùüû]/gi, "")
+        parrafo.textContent = us;
+     })
+
+    reiniciar.addEventListener('click', ()=>{
+        parrafo.textContent = "Éste es un párrafo de prueba que servirá para probar el funcionamiento de los botones que eliminan las vocales"
+     })
+
+    </script>
+
+</body>
+</html>

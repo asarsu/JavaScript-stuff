@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenar Elementos</title>
+    <style>
+        .container{
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>    
+<body>
+    <header>    
+        <h1>3. Ordenar Elementos</h1>
+        <p>Escribe un programa que permita ordenar los elementos de una lista desordenada. Cada elemento debe tener un aspa en su extremo derecho para poder ser eliminado. Además, al final habrá un botón para añadir un elemento. El texto del nuevo elemento se le debe pedir al usuario por teclado.</p>
+        <p><a href="index.html">volver atrás</a></p>
+    </header>
+
+    <main>
+
+        <h3>Lista de compras</h3>
+        <ul id="lista">
+            <li>manzanas</li>
+            <li>tomates</li>
+            <li>piña</li>
+ 
+        </ul>
+
+        <button id="botonAgregar">Añadir Item</button>
+        <button id="botonOrdenar">Ordenar lista</button>
+    </main>
+
+    <script>
+
+        let lista = document.getElementById('lista')
+
+        //crear un array vacio para ordenar el contenido de cada li    
+        let itemText = []
+           //añadir boton de eliminar:
+           //selecionar los li
+        let items = document.querySelectorAll('li')
+        
+        for (let item of items){
+            //crea el boton
+            let botonEliminar = document.createElement('button')
+            botonEliminar.textContent = 'X'
+            item.append(botonEliminar)
+            //crear la funcion de eliminar
+            botonEliminar.addEventListener('click', (event)=>{
+                item.remove()
+                let textoEliminado = item.childNodes[0].textContent;
+
+                //para eliminar el texto del array itemtext
+                let indice = itemText.indexOf(item.childNodes[0].textContent);
+                if (indice > -1){
+                    itemText.splice(indice, 1)  
+                }
+            
+            })
+        }
+
+       //crear la funcion para ordentar la lista
+     
+       //extraer el texto de cada li
+       for (let texto of items){
+        texto = texto.childNodes[0].textContent
+        itemText.push(texto)
+       }
+       
+       let botonOrdenar = document.getElementById('botonOrdenar')
+       botonOrdenar.addEventListener('click', ()=>{
+        //ordenamos el array itemText 
+        itemText.sort()
+        //vaciamos el ul #lista
+        lista.innerHTML = ''
+        //agregamos el texto de itemTex a cada li dentro del ul
+        itemText.map(item =>{
+            let nuevoLi = document.createElement('li')
+            nuevoLi.textContent = item
+            lista.append(nuevoLi)
+            //agregamos el boton eliminar a la nueva lista ordenada
+            let botonEliminar = document.createElement('button')
+            botonEliminar.textContent = 'X'
+            nuevoLi.append(botonEliminar)
+            //damos funcionalidad el boton eliminar de la lista ordenada
+             botonEliminar.addEventListener('click', (event)=>{
+                nuevoLi.remove()
+                let textoEliminado = nuevoLi.childNodes[0].textContent;
+
+                //para eliminar el texto del array itemtext
+                let indice = itemText.indexOf(nuevoLi.childNodes[0].textContent);
+                if (indice > -1){
+                    itemText.splice(indice, 1)  
+                }
+            
+            })
+        })
+
+       })
+
+       //para el boton añadir
+       botonAgregar = document.getElementById('botonAgregar')
+       botonAgregar.addEventListener('click', ()=>{
+        nuevoItem = document.createElement('li')
+        nuevoItem.textContent = prompt('Ingrese el nuevo item')
+        //agrgar el nuevoitem (nuevo li) a la lista (ul)
+        lista.append(nuevoItem)
+        //agregar el boton X al nuevo elemento de la lista
+        let botonEliminar = document.createElement('button')
+            botonEliminar.textContent = 'X'
+            nuevoItem.append(botonEliminar)
+        //anñadimos la funcion de eliminar al nuevo elemento
+        botonEliminar.addEventListener('click', (event)=>{
+                nuevoItem.remove()
+                let textoEliminado = nuevoItem.childNodes[0].textContent;
+
+                //para eliminar el texto del array itemtext
+                let indice = itemText.indexOf(nuevoItem.childNodes[0].textContent);
+                if (indice > -1){
+                    itemText.splice(indice, 1)  
+                }
+            
+            })
+
+
+        //agregar el texto del nuevo item a itemText para poder ordenar
+        let nuevoItemTexto = nuevoItem.childNodes[0].textContent
+        console.log(nuevoItemTexto)
+        itemText.push(nuevoItemTexto)
+       });
+       
+    
+       
+       
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Imagenes</title>
+</head>
+
+    <h1>1. Cargar Imagenes</h1>
+    <p><a href="index.html">volver atrás</a></p>
+    
+    <p>Crea una página HTML con un contenedor de una imagen. Debes tener preparadas diez imágenes y en función de la tecla numérica que se pulse (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) debe aparecer esa imagen en el contenedor. Cuando se pulse otro número, debe vaciarse el contenedor y cargarse de nuevo su imagen correspondiente.</p>
+
+    <div class="container">
+        <img class="img" src="https://picsum.photos/id/34/600/400" alt="">
+    </div>
+
+    <script>
+
+        let imagenes = [
+            "https://picsum.photos/id/34/600/400",
+            "https://picsum.photos/id/68/600/400",
+            "https://picsum.photos/id/25/600/400",
+            "https://picsum.photos/id/3/600/400",
+            "https://picsum.photos/id/17/600/400",
+            "https://picsum.photos/id/14/600/400",
+            "https://picsum.photos/id/88/600/400",
+            "https://picsum.photos/id/59/600/400",
+            "https://picsum.photos/id/20/600/400",
+            "https://picsum.photos/id/32/600/400",
+        ]
+
+        let currentImage = document.getElementsByClassName('img')[0]
+
+     
+        document.addEventListener('keypress', (event)=>{
+            let tecla = parseInt(event.key)
+            if (tecla >=0 && tecla <=9){
+                 currentImage.setAttribute('src', imagenes[tecla])
+            console.log(`tecla ${tecla} presionada`)
+            }else{
+                alert('comando ínvalido, presione una tecla entre 0 y 9')
+            }                                                                                
+        })
+
+         
+        
+       
+       
+    </script>
+<body>
+    
+</body>
+</html>

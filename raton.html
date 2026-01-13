@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratón</title>
+    <style>
+        #cuadrado{
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>    
+<body>
+    <header>    
+        <h1>5. Ratón</h1>
+        <p>Crea una rutina que no permita que el ratón se coloque encima de una caja azul de 100 x 100 px. Cada vez que el ratón intente colocarse encima, la posición de la caja debe cambiar aleatoriamente por la página.</p>
+        <p><a href="index.html">volver atrás</a></p>
+    </header>
+
+    <main>
+        <div id="cuadrado"></div>
+    </main>
+
+    <script>
+    
+        //crear la funcion para el movimiento del cuadrado
+        function movimiento(){
+            let x = Math.random() * (window.innerWidth - 100)
+            let y = Math.random() * (window.innerHeight - 100)
+            cuadrado.style.left = x + 'px'
+            cuadrado.style.top = y + 'px'
+        }
+    
+        let cuadrado = document.getElementById('cuadrado')
+        cuadrado.addEventListener('mousemove', ()=>{
+            movimiento()
+        });
+    
+
+    </script>
+
+</body>
+</html>

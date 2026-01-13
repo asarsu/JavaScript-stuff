@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rellenar Párrafo</title>
+</head>    
+<body>
+    <header>    
+        <h1>3. Rellenar párrafo</h1>
+        <p>Elabora un programa que vaya rellenando un párrafo de forma dinámica con todas las letras que vaya pulsando el usuario sobre cualquier elemento de la página. Al final del párrafo debes incluir un botón para limpiar el contenido del párrafo.</p>
+        <p><a href="index.html">volver atrás</a></p>
+    </header>
+
+    <main>
+        <h2>Parrafo</h2>
+        <p id="parrafoVacio"></p>
+        <button  id="finalizar">Finalizar</button>
+        <button id="borrar">Borrar</button>
+   
+    </main>
+
+    <script>
+
+        //crear el parrafo vacio
+        let parrafoVacio = document.getElementById('parrafoVacio')
+
+        //crear la funcion para agregar letra
+        function teclear(event){           
+            parrafoVacio.textContent += event.key;
+        }
+        //agregar eventlistener para la tecla pulsada y añadir al parrafo
+        document.addEventListener('keydown', teclear)
+
+        //dar funcionalidad al boton de borrar
+        let botonBorrar = document.getElementById('borrar')
+        botonBorrar.addEventListener('click', ()=>{
+            parrafoVacio.textContent = ''
+        })
+
+        //dar funcionalidad al boton finalizar
+        let botonFinalizar = document.getElementById('finalizar')
+        
+        //funcion para finalizar el tecleado
+        function finalizar(){
+            document.removeEventListener('keydown', teclear)
+            console.log('entrada finalizada')
+        }
+
+        botonFinalizar.addEventListener('click', finalizar)
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocidad</title>
+    <style>
+
+        /* .cajaContainer{
+            width: 600px;
+        } */
+        #verde{
+            height: 40px;
+            width: 10px;
+            /* max-width: 500px; */
+            position: relative;
+            background-color: green; 
+        }
+
+        #roja{
+            height: 40px;
+            width: 10px;
+            /* max-width: 500px; */
+            position: relative;
+            background-color: red;
+        
+        }
+
+        #ganaVerde{
+            visibility: hidden;
+            font-size: 2rem;
+            color: green;
+            margin: 0;
+        }
+
+         #ganaRoja{
+            visibility: hidden;
+            font-size: 2rem;
+            color: red;
+            margin: 0;
+        }
+    </style>
+   
+</head>    
+<body>
+    <header>    
+        <h1>7. Velocidad</h1>
+        <p>Escribe un programa para simular la velocidad de pulsación de dos teclas. En pantalla aparecerán dos cajas, una verde y otra roja, una debajo de otra. El alto de cada caja será de 40 px y el ancho inicial de 10 px cada una. La primera caja incrementará su ancho 5px cada vez que se pulse la tecla [a]. La segunda caja hará lo mismo cuando se pulse la tecla [ñ]. El juego termina cuando una de las cajas llega a 500 px de ancho. En ese momento deben desactivarse los eventos de ambas teclas y mostrarse un mensaje bajo las cajas que ponga «GANA VERDE» • «GANA ROJO». Se trata de calcular con qué mano eres capaz de realizar más pulsaciones.</p>
+        <p><a href="index.html">volver atrás</a></p>
+    </header>
+
+    <main>
+        
+        <div class="cajaContainer">
+            <p id="verde"></p>
+            <p id="ganaVerde">Gana Verde!</p>
+        </div>
+        <div class="cajaContainer">
+            <p id="roja"></p>
+            <p id="ganaRoja">Gana Roja!</p>
+
+        </div>
+        
+    </main>
+
+    <script>
+        
+        let verde = document.getElementById('verde');
+        let ganaVerde = document.getElementById('ganaVerde');
+        let ganaRoja = document.getElementById('ganaRoja');
+
+        let paso = 5;
+        let anchoVerde = 10;
+        let anchoRojo = 10;
+        const anchoMaximo = 500;
+            
+
+        function pulsar(){
+             let teclaPulsada = event.key;
+
+            switch (teclaPulsada){
+                case 'a':
+                    anchoVerde += paso;
+                    break
+                case 'ñ':
+                    anchoRojo += paso;
+                    break
+            }
+            
+            verde.style.width = `${anchoVerde}px`
+            roja.style.width = `${anchoRojo}px`
+            console.log('a')
+
+            if (verde.style.width === '500px'){
+                console.log('verde gana');
+                document.removeEventListener('keydown',pulsar);
+                ganaVerde.style.visibility = 'visible'
+
+
+            }else if (roja.style.width === '500px'){
+                console.log('rojo gana')
+                 document.removeEventListener('keydown',pulsar);
+                 ganaRoja.style.visibility = 'visible'
+            }
+        }
+        
+        
+        document.addEventListener('keydown', pulsar)
+
+        
+       
+
+
+       
+
+
+    </script>
+
+</body>
+</html>

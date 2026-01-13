@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja Roja</title>
+    <style>
+        .container{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>    
+<body>
+    <h1>2. Caja Roja</h1>
+    <p><a href="index.html">volver atrás</a></p>
+    
+    <p>Crea una aplicación cuyo código HTML contenga únicamente una caja roja. Cada vez que el usuario pulse algunas de las teclas de los cursores (flecha arriba, flecha abajo, flecha a derecha, flecha a izquierda) la caja debe desplazarse 10 px en la dirección establecida por el cursor.</p>
+
+    <div id="caja" class="container">
+       
+    </div>
+
+    <script>
+
+        document.addEventListener('keydown', (event) => {
+        // Evita que el navegador realice su acción por defecto (scrolling)
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].    includes(event.key)) {
+                event.preventDefault();
+        }
+        });
+
+        let caja = document.getElementById('caja')
+        //let posicionInical = caja.getBoundingClientRect()
+       
+        let posicionX = 0
+        let posicionY = 0
+        let paso = 10
+
+        document.addEventListener('keydown', (event)=>{
+            const teclaPulsada = event.key;
+            
+           
+            
+            switch (teclaPulsada){
+                case 'ArrowUp':
+                    console.log('flecha arriba')
+                    posicionY -= paso                   
+                    break
+                case 'ArrowDown':
+                    console.log('flecha abajo')
+                    posicionY += paso
+                    break
+                case 'ArrowLeft':
+                    console.log('flecha izquierda')
+                    posicionX -= paso
+                    break
+                case 'ArrowRight':
+                    posicionX += paso
+                    console.log('flecha derecha')
+                    break
+            }
+
+            caja.style.top = `${posicionY}px`
+            caja.style.left = `${posicionX}px`
+
+            console.log(`Nueva Posición: X=${posicionX}px, Y=${posicionY}px`); 
+        })
+
+       
+    </script>
+</body>
+</html>
